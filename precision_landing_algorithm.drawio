@@ -31,7 +31,7 @@
             <mxPoint x="17" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WIyWlLk6GJQsqaUBKTNV-6" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;$$\begin{gather}&lt;br&gt;\textbf{Image} \\&amp;nbsp;&lt;br&gt;\textbf{Detecting?}&lt;br&gt;\end{gather}$$&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-6" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;$$\begin{gather}&lt;br&gt;\textbf{Image} \\&amp;nbsp;&lt;br&gt;\textbf{Detecting?}&lt;br&gt;\end{gather}$$&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="260" y="95.01" width="106" height="90" as="geometry" />
         </mxCell>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-7" value="$$ \textbf{publishing} \space w=+ \space 0.05 \space m/s$$" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -80,6 +80,9 @@
         </mxCell>
         <mxCell id="tzePTJvQw5AR3yshpvyA-7" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;$$\begin{gather} &lt;br&gt;alt. &amp;lt;= 1.5 \space m\\&amp;nbsp;&lt;br&gt;\text{(AUTO.LAND mode)}&amp;nbsp;&lt;br&gt;\end{gather}$$&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="780" y="111.26" width="170" height="57.5" as="geometry" />
+        </mxCell>
+        <mxCell id="M113tHTJbv-mDuMexady-0" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;$$\begin{gather}&lt;br&gt;\textbf{Image} \\&amp;nbsp;&lt;br&gt;\textbf{Detecting?}&lt;br&gt;\end{gather}$$&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;shadow=0;fontFamily=Helvetica;fontSize=12;align=center;strokeWidth=1;spacing=6;spacingTop=-4;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="50" width="106" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
