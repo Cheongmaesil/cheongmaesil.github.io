@@ -144,7 +144,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="h0uaoV0_T3l3K0UoVl8N-11" value="$$\begin{gather}&lt;br&gt;&amp;nbsp;\textbf{publishing } u,v \\&amp;nbsp;&lt;br&gt;w=0 \text{ (holding alt.)}&lt;br&gt;\end{gather}$$" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="h0uaoV0_T3l3K0UoVl8N-11" value="$$\begin{gather}&lt;br&gt;&amp;nbsp;\textbf{publishing } u,v,r \\&amp;nbsp;&lt;br&gt;w=0 \text{ (holding alt.)}&lt;br&gt;\end{gather}$$" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="484" y="520" width="200" height="50" as="geometry" />
         </mxCell>
       </root>
