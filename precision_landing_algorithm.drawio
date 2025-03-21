@@ -139,6 +139,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="7ZwpKQaQbAKpHk41zUnU-36" value="&lt;b&gt;No&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7ZwpKQaQbAKpHk41zUnU-35">
+          <mxGeometry x="-0.0377" y="-3" relative="1" as="geometry">
+            <mxPoint x="-13" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="tzePTJvQw5AR3yshpvyA-1" value="$$\begin{gather}&lt;br&gt;alt. &amp;lt;= 1.5 \space m\\&amp;nbsp;&lt;br&gt;\end{gather}$$" style="rhombus;whiteSpace=wrap;html=1;align=center;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="1140" y="387.44000000000005" width="110" height="83.37" as="geometry" />
         </mxCell>
