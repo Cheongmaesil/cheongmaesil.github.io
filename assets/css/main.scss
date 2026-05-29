@@ -407,6 +407,22 @@ html.dark-mode {
     fill: #ffffff !important;
     opacity: 1 !important;
   }
+
+  // Make pagination links (이전 글, 다음 글) and page date (Updated:) white in dark mode
+  .pagination--pager,
+  .pagination--pager.disabled,
+  .page__date,
+  .page__date strong,
+  .page__date time {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    opacity: 0.85 !important;
+  }
+  .pagination--pager:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    opacity: 1 !important;
+  }
 }
 
 // Brighten up all Post Content / Paragraph texts!
