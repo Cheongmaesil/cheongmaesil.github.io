@@ -304,7 +304,7 @@ div.highlighter-rouge, figure.highlight {
   }
 }
 
-.toc__menu a {
+.toc a, .toc a:visited {
   font-family: "Outfit", sans-serif !important;
   font-size: 0.85em !important;
   color: var(--text-color) !important;
@@ -326,7 +326,7 @@ div.highlighter-rouge, figure.highlight {
 }
 
 // Active TOC item highlight (Light Mode)
-.toc__menu li.active a {
+.toc li.active a, .toc a.active {
   color: rgba(49, 46, 129, 0.95) !important;
   opacity: 1 !important;
   font-weight: 600 !important;
@@ -352,7 +352,7 @@ html.dark-mode {
     }
   }
 
-  .toc__menu a {
+  .toc a, .toc a:visited {
     color: rgba(255, 255, 255, 0.6) !important;
     opacity: 1 !important;
 
@@ -364,7 +364,7 @@ html.dark-mode {
     }
   }
 
-  .toc__menu li.active a {
+  .toc li.active a, .toc a.active {
     color: rgba(165, 180, 252, 0.95) !important; // Premium 95% translucent Periwinkle Blue!
     font-weight: 600 !important;
     border-left: 2px solid rgba(165, 180, 252, 0.6) !important; // Soft border
