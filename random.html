@@ -1,0 +1,33 @@
+---
+layout: default
+title: "Random Post Redirect"
+permalink: /random/
+---
+
+<div style="text-align: center; padding: 8em 2em; font-family: 'Outfit', sans-serif;">
+  <i class="fas fa-sync fa-spin" style="font-size: 3em; color: var(--link-hover); margin-bottom: 0.8em; display: inline-block;"></i>
+  <h2 style="color: var(--headings-color); font-weight: 700; margin-bottom: 0.5em;">Randomizing a study note...</h2>
+  <p style="color: var(--text-color); opacity: 0.7; font-size: 1.1em;">Please wait, redirecting you to a random engineering post.</p>
+</div>
+
+<script>
+  (function() {
+    // Array of all post URLs compiled dynamically by Jekyll Liquid
+    const posts = [
+      {% for post in site.posts %}
+        "{{ post.url | relative_url }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    if (posts.length > 0) {
+      // Select a random post url from the array
+      const randomUrl = posts[Math.floor(Math.random() * posts.length)];
+      // Subtle delay for a polished premium UX feeling
+      setTimeout(function() {
+        window.location.replace(randomUrl);
+      }, 600);
+    } else {
+      window.location.replace("{{ '/' | relative_url }}");
+    }
+  })();
+</script>

@@ -22,6 +22,10 @@
             </li>
           {%- endfor -%}
         </ul>
+        <!-- Dark Mode Toggle Button -->
+        <button class="dark-mode-toggle" id="js-dark-mode-toggle" type="button" style="background: none; border: none; cursor: pointer; font-size: 1.1em; color: inherit; margin-left: 10px; display: inline-flex; align-items: center; justify-content: center; outline: none; padding: 0 10px;">
+          <i class="fas fa-moon" id="js-dark-mode-icon"></i>
+        </button>
         {% if site.search == true %}
         <button class="search__toggle" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "Toggle search" }}</span>

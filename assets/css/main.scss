@@ -7,3 +7,549 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// ==========================================================================
+// 🎓 LaTeX / Overleaf Premium Academic Theme Customization
+// ==========================================================================
+
+// --- CSS Variables Definition ---
+:root {
+  // Light Mode Variables (Premium Warm Academic Paper Style)
+  --bg-color: #f7f7f5;
+  --bg-gradient: linear-gradient(135deg, #f7f7f5 0%, #e8e8e5 100%);
+  --text-color: #2b2b29;
+  --paper-bg: #ffffff;
+  --headings-color: #0b1d3a;
+  --shadow-color: rgba(0, 0, 0, 0.04);
+  --border-color: rgba(0, 0, 0, 0.03);
+  --header-bg: #ecece8;
+  --header-bg-glass: rgba(247, 247, 245, 0.45);
+  --sidebar-bg: #fafaf8;
+  --sidebar-border: rgba(0, 0, 0, 0.04);
+  --link-hover: #1E40AF;
+  --blockquote-bg: #fafaf8;
+  --blockquote-border: #1E40AF;
+  --inline-code-bg: #f1f2f6;
+  --inline-code-color: #b83280;
+  
+  // Callouts Light Theme Colors
+  --callout-note-bg: #ebf8ff;
+  --callout-note-text: #2c5282;
+  --callout-note-border: #2b6cb0;
+  
+  --callout-todo-bg: #f7fafc;
+  --callout-todo-text: #2d3748;
+  --callout-todo-border: #3182ce;
+  
+  --callout-tip-bg: #e6fffa;
+  --callout-tip-text: #234e52;
+  --callout-tip-border: #319795;
+  
+  --callout-important-bg: #faf5ff;
+  --callout-important-text: #553c9a;
+  --callout-important-border: #805ad5;
+  
+  --callout-warning-bg: #fffaf0;
+  --callout-warning-text: #7b341e;
+  --callout-warning-border: #dd6b20;
+  
+  --callout-danger-bg: #fff5f5;
+  --callout-danger-text: #742a2a;
+  --callout-danger-border: #e53e3e;
+}
+
+html.dark-mode {
+  // Dark Mode Variables (Deep Space High-Contrast Cybernetic Style)
+  --bg-color: #0b0c10; // Dark space/charcoal black
+  --bg-gradient: linear-gradient(135deg, #0a192f 0%, #030712 100%);
+  --text-color: #ffffff; // 100% pure white text for maximum readability!
+  --paper-bg: #15171e; // Gorgeous paper-like dark card
+  --headings-color: #ffffff; // 100% pure white headings
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --border-color: rgba(255, 255, 255, 0.06);
+  --header-bg: #0d1b2a;
+  --header-bg-glass: rgba(11, 12, 16, 0.45);
+  --sidebar-bg: #0a192f;
+  --sidebar-border: rgba(255, 255, 255, 0.05);
+  --link-hover: #3B82F6; // Vibrant sky blue
+  --blockquote-bg: #1c1f26;
+  --blockquote-border: #3B82F6;
+  --inline-code-bg: #2d3748;
+  --inline-code-color: #f687b3; // Bright pink for high visibility in dark mode
+  
+  // Callouts Dark Theme Colors (Glowing & High Contrast)
+  --callout-note-bg: #1e293b;
+  --callout-note-text: #93c5fd;
+  --callout-note-border: #3b82f6;
+  
+  --callout-todo-bg: #1a202c;
+  --callout-todo-text: #e2e8f0;
+  --callout-todo-border: #4a5568;
+  
+  --callout-tip-bg: #064e3b;
+  --callout-tip-text: #6ee7b7;
+  --callout-tip-border: #10b981;
+  
+  --callout-important-bg: #3c0d68;
+  --callout-important-text: #d6bcfa;
+  --callout-important-border: #a855f7;
+  
+  --callout-warning-bg: #78350f;
+  --callout-warning-text: #fcd34d;
+  --callout-warning-border: #f59e0b;
+  
+  --callout-danger-bg: #7f1d1d;
+  --callout-danger-text: #fca5a5;
+  --callout-danger-border: #ef4444;
+}
+
+// Global Transitions for Smooth Mode Switching
+body, #main, .masthead, .sidebar, .toc, .obsidian-callout, .author__profile {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+// Global Typography Override
+body {
+  font-family: "Lora", "Noto Serif KR", Georgia, serif !important;
+  font-size: 16.5px !important;
+  line-height: 1.8 !important;
+  color: var(--text-color) !important;
+  background-color: var(--bg-color) !important;
+  background-image: var(--bg-gradient) !important; // Sleek gradient background that flows behind the cards
+  background-attachment: fixed !important; // Keep the gradient static while scrolling for parallax depth
+  -webkit-font-smoothing: antialiased;
+}
+
+// Headings & Navigation with "Outfit"
+h1, h2, h3, h4, h5, h6, 
+.masthead, .masthead__menu-item, 
+.archive__item-title, .nav__title,
+.toc__menu, .page__footer, .btn, .page__meta {
+  font-family: "Outfit", "Noto Serif KR", sans-serif !important;
+}
+
+h1, h2, h3, h4 {
+  color: var(--headings-color) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+// LaTeX Paper look: Centered container with dynamic background & shadow
+#main {
+  background: var(--paper-bg);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  padding: 2.5em;
+  margin: 2em auto !important;
+  max-width: 1280px;
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 1024px) {
+  #main {
+    margin: 1em !important;
+    padding: 1.5em;
+    border-radius: 12px;
+  }
+}
+
+// Masthead/Navigation Styling (Clean Solid Strip with dynamic gradient bar)
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1em 0;
+  border-bottom: 1px solid var(--border-color) !important;
+  background-color: var(--header-bg) !important;
+  box-shadow: 0 4px 20px var(--shadow-color) !important;
+}
+
+// Poetic "Sun Rising & Setting" dynamic top gradient bar!
+.masthead::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background-image: linear-gradient(90deg, #3B82F6 0%, #F59E0B 25%, #1E40AF 50%, #0A192F 75%, #020617 100%) !important;
+  background-size: 200% 100% !important;
+  background-position: 0% 0% !important; // Light Mode: Sky Blue -> Sun Orange sunset colors
+  transition: background-position 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important; // Ultra-smooth sunset glide!
+  z-index: 9999;
+}
+
+// In Dark Mode, shift the gradient to show the deep space/night sky colors!
+html.dark-mode .masthead::before {
+  background-position: 100% 0% !important; // Dark Mode: Deep Space Navy -> Space Black
+}
+
+// Clear any theme-defined background on greedy-nav/inner-wrap to prevent white blocks!
+.greedy-nav, .masthead__inner-wrap {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.masthead__menu-item a {
+  font-weight: 500 !important;
+  color: var(--text-color) !important;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  &:hover {
+    color: var(--link-hover) !important;
+    opacity: 1;
+  }
+}
+
+// Ensure Blog Title & Logo are naturally integrated, changing colors perfectly on theme invert
+.site-logo, .site-title, a.site-title, .site-title:visited {
+  color: var(--headings-color) !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease !important;
+  
+  // Clean integrated layout (No floating badges!)
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-right: 0.5em !important;
+}
+
+// Premium dynamic logo color inversion for dark mode
+.site-logo img {
+  transition: filter 0.3s ease !important;
+}
+
+html.dark-mode .site-logo img {
+  filter: invert(1) brightness(1.2) !important; // Clean crisp logo inversion in dark mode!
+}
+
+// Code Typography & Beautiful Blocks
+code, kbd, pre, samp {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.92em !important;
+}
+
+p > code, li > code {
+  background-color: var(--inline-code-bg) !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 4px !important;
+  color: var(--inline-code-color) !important;
+  font-weight: 500;
+}
+
+div.highlighter-rouge, figure.highlight {
+  background-color: #121318 !important; // Stays dark charcoal even in light mode for dev code comfort
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+  margin: 1.5em 0 !important;
+  padding: 0.5em !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  
+  pre {
+    background-color: transparent !important;
+    padding: 1em !important;
+    margin: 0 !important;
+    overflow-x: auto;
+  }
+  
+  code {
+    color: #f8f8f2 !important;
+  }
+}
+
+// LaTeX Equations block styling
+.katex-display {
+  padding: 1.2em 0 !important;
+  margin: 1.5em 0 !important;
+  background-color: var(--blockquote-bg) !important;
+  border-left: 3px solid var(--blockquote-border) !important;
+  border-radius: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+// Table of Contents (TOC) Custom Styling
+.sidebar__right.sticky {
+  top: 100px !important;
+}
+
+.toc {
+  background-color: var(--blockquote-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 1.2em !important;
+  box-shadow: 0 4px 12px var(--shadow-color) !important;
+}
+
+.toc .nav__title {
+  color: var(--headings-color) !important;
+  font-size: 0.95em !important;
+  border-bottom: 2px solid var(--border-color) !important;
+  padding-bottom: 0.5em !important;
+  margin-bottom: 0.8em !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.toc__menu a {
+  font-size: 0.85em !important;
+  color: var(--text-color) !important;
+  opacity: 0.7;
+  padding: 0.3em 0 !important;
+  transition: all 0.2s ease !important;
+  border-left: 2px solid transparent;
+  padding-left: 8px !important;
+  display: block;
+  
+  &:hover {
+    color: var(--link-hover) !important;
+    opacity: 1;
+    padding-left: 12px !important;
+    border-left: 2px solid var(--link-hover);
+    background-color: rgba(30, 64, 175, 0.04);
+  }
+}
+
+// Active TOC item highlight
+.toc__menu li.active a {
+  color: var(--link-hover) !important;
+  opacity: 1;
+  font-weight: 600 !important;
+  border-left: 2px solid var(--link-hover) !important;
+  padding-left: 12px !important;
+}
+
+// Categories & Tags Styling
+.page__taxonomy-item {
+  font-family: "Outfit", sans-serif !important;
+  font-weight: 500 !important;
+  background: var(--blockquote-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-color) !important;
+  padding: 0.4em 0.8em !important;
+  border-radius: 20px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  font-size: 0.8em !important;
+  margin-right: 0.5em !important;
+  margin-bottom: 0.5em !important;
+  display: inline-block;
+  
+  &:hover {
+    background: linear-gradient(135deg, #0A192F 0%, #1E40AF 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(30, 64, 175, 0.15) !important;
+    transform: translateY(-1px);
+    border-color: transparent !important;
+  }
+}
+
+// Author Profile styling (Sleek card look)
+.author__profile {
+  background-color: var(--sidebar-bg);
+  border: 1px solid var(--sidebar-border);
+  border-radius: 16px;
+  padding: 1.5em;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.author__avatar img {
+  border-radius: 50% !important;
+  border: 4px solid var(--paper-bg) !important;
+  box-shadow: 0 6px 15px var(--shadow-color) !important;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: rotate(5deg) scale(1.05);
+  }
+}
+
+.author__name {
+  color: var(--headings-color) !important;
+  font-weight: 700 !important;
+  font-size: 1.2em !important;
+  margin-top: 10px !important;
+}
+
+.author__bio {
+  color: var(--text-color) !important;
+  font-size: 0.9em !important;
+}
+
+// Location, Email, and Social links in the sidebar
+.author__urls {
+  li, a, .svg-inline--fa, svg, path {
+    color: var(--text-color) !important;
+    fill: currentColor !important; // Forces SVG paths to dynamically inherit color variable!
+    transition: all 0.3s ease !important;
+  }
+  a:hover {
+    color: var(--link-hover) !important;
+    opacity: 1 !important;
+    .svg-inline--fa, svg, path {
+      color: var(--link-hover) !important;
+      fill: currentColor !important;
+    }
+  }
+}
+
+// Bulletproof Constant Pure White in Dark Mode for Sidebar!
+html.dark-mode {
+  .author__name, .author__name a, .author__name a:visited,
+  .author__bio,
+  .author__urls li, .author__urls a, .author__urls a:visited,
+  .author__urls .svg-inline--fa, .author__urls svg, .author__urls path {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    opacity: 1 !important;
+  }
+}
+
+// Brighten up all Post Content / Paragraph texts!
+.page__content, .page__content p, .page__content li, .page__content dt, .page__content dd, .page__content td, .page__content th {
+  color: var(--text-color) !important;
+  opacity: 0.95 !important; // Clean crisp light gray/white text, perfectly readable!
+}
+
+// Ensure Post Titles (both on homepage listing and inside post pages) swap colors perfectly in dark mode!
+.archive__item-title a, .archive__item-title a:visited,
+.page__title, .page__title a, .page__title a:visited {
+  color: var(--headings-color) !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease !important;
+}
+
+// Hover state in Dark Mode: Make it pure brilliant white!
+html.dark-mode .archive__item-title a:hover,
+html.dark-mode .page__title a:hover {
+  color: #ffffff !important;
+  text-decoration: underline !important;
+}
+
+.author__urls-wrapper button {
+  background-color: var(--paper-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+// Page Footer
+.page__footer {
+  background-color: var(--paper-bg) !important;
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-color) !important;
+  opacity: 0.8;
+}
+
+// ==========================================================================
+// 💡 Obsidian-Style Callout Boxes CSS Styling
+// ==========================================================================
+.obsidian-callout {
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  border-left: 5px solid #000;
+  margin: 1.8em 0;
+  padding: 1.1em 1.3em;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: translateX(2px);
+  }
+  
+  .callout-title {
+    display: flex;
+    align-items: center;
+    font-family: "Outfit", sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    margin-bottom: 0.6em;
+    gap: 8px;
+  }
+  
+  .callout-icon {
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .callout-content {
+    font-size: 0.98em;
+    line-height: 1.7;
+    
+    & > *:first-child {
+      margin-top: 0 !important;
+    }
+    & > *:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+// Callout Types Colors Configuration
+.callout-note, .callout-info {
+  border-left-color: var(--callout-note-border);
+  background-color: var(--callout-note-bg);
+  color: var(--callout-note-text);
+  .callout-title { color: var(--callout-note-border); }
+}
+
+.callout-todo {
+  border-left-color: var(--callout-todo-border);
+  background-color: var(--callout-todo-bg);
+  color: var(--callout-todo-text);
+  .callout-title { color: var(--callout-todo-border); }
+}
+
+.callout-tip, .callout-hint {
+  border-left-color: var(--callout-tip-border);
+  background-color: var(--callout-tip-bg);
+  color: var(--callout-tip-text);
+  .callout-title { color: var(--callout-tip-border); }
+}
+
+.callout-important {
+  border-left-color: var(--callout-important-border);
+  background-color: var(--callout-important-bg);
+  color: var(--callout-important-text);
+  .callout-title { color: var(--callout-important-border); }
+}
+
+.callout-warning {
+  border-left-color: var(--callout-warning-border);
+  background-color: var(--callout-warning-bg);
+  color: var(--callout-warning-text);
+  .callout-title { color: var(--callout-warning-border); }
+}
+
+.callout-caution, .callout-danger {
+  border-left-color: var(--callout-danger-border);
+  background-color: var(--callout-danger-bg);
+  color: var(--callout-danger-text);
+  .callout-title { color: var(--callout-danger-border); }
+}
+
+.callout-bug {
+  border-left-color: var(--callout-danger-border);
+  background-color: var(--callout-danger-bg);
+  color: var(--callout-danger-text);
+  .callout-title { color: var(--callout-danger-border); }
+}
+
+.callout-example {
+  border-left-color: var(--text-color);
+  background-color: var(--blockquote-bg);
+  color: var(--text-color);
+  .callout-title { color: var(--text-color); }
+}
+
+.callout-question {
+  border-left-color: var(--callout-important-border);
+  background-color: var(--callout-important-bg);
+  color: var(--callout-important-text);
+  .callout-title { color: var(--callout-important-border); }
+}

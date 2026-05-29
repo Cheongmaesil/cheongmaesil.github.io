@@ -30,7 +30,7 @@ logo                     : "/images/favicon.svg"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
-enable_copy_code_button  : # true, false (default)
+enable_copy_code_button  : true
 copyright                : # "copyright" name, defaults to site.title
 copyright_url            : # "copyright" URL, defaults to site.url
 comments:
@@ -115,13 +115,13 @@ analytics:
 author:
   name             : "Cheongmaesil"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Welcome!!"
-  location         : "Somewhere"
+  bio              : "Guidance & Control"
+  location         : # "Somewhere" (Removed)
   email            : cheongmaesil1003@gmail.com
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:cheongmaesil1003@gmail.com"
+    # - label: "Email"
+    #   icon: "fas fa-fw fa-envelope-square"
+    #   url: "mailto:cheongmaesil1003@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -324,3 +324,6 @@ defaults:
       comments: # true
       share: true
       related: true
+      toc: true
+      toc_sticky: true
+      mathjax: true

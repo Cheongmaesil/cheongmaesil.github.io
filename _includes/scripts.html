@@ -26,3 +26,128 @@
     <script src="{{ script | relative_url }}"></script>
   {% endfor %}
 {% endif %}
+
+<!-- KaTeX Math JS and Auto-render snippet -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21hFrHypEErMTeW8WZ4LaVN45wus118z716SGCOdB3u2OIy4V4ZWSum79hcly" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ11Up5y6R59y9T1wADiEkFJ3t9JaUHpYiQP2Fq1wAX191Q+Y" crossorigin="anonymous" onload="renderMath()"></script>
+
+<script>
+  function renderMath() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
+      ],
+      throwOnError : false
+    });
+  }
+
+  // Obsidian Callout Renderer
+  document.addEventListener("DOMContentLoaded", function() {
+    const blockquotes = document.querySelectorAll("blockquote");
+    
+    // Icon mapping for Obsidian callouts
+    const calloutIcons = {
+      note: '<i class="fas fa-info-circle"></i>',
+      info: '<i class="fas fa-info-circle"></i>',
+      todo: '<i class="fas fa-check-circle"></i>',
+      tip: '<i class="fas fa-lightbulb"></i>',
+      hint: '<i class="fas fa-lightbulb"></i>',
+      important: '<i class="fas fa-exclamation-circle"></i>',
+      warning: '<i class="fas fa-exclamation-triangle"></i>',
+      caution: '<i class="fas fa-fire"></i>',
+      danger: '<i class="fas fa-times-circle"></i>',
+      bug: '<i class="fas fa-bug"></i>',
+      quote: '<i class="fas fa-quote-left"></i>',
+      example: '<i class="fas fa-list-ul"></i>',
+      question: '<i class="fas fa-question-circle"></i>'
+    };
+
+    blockquotes.forEach(quote => {
+      // Find the first paragraph in blockquote
+      const firstP = quote.querySelector("p");
+      if (!firstP) return;
+
+      const html = firstP.innerHTML.trim();
+      // Match pattern like [!note] or [!warning] at the beginning
+      const match = html.match(/^\[\!([a-zA-Z]+)\]\s*(.*)/i);
+      
+      if (match) {
+        const type = match[1].toLowerCase();
+        let titleText = match[2].trim();
+        
+        // Default title if empty
+        if (!titleText) {
+          titleText = type.charAt(0).toUpperCase() + type.slice(1);
+        }
+
+        // Create callout wrapper
+        const callout = document.createElement("div");
+        callout.className = `obsidian-callout callout-${type}`;
+        
+        // Create title bar
+        const titleBar = document.createElement("div");
+        titleBar.className = "callout-title";
+        
+        const iconSpan = document.createElement("span");
+        iconSpan.className = "callout-icon";
+        iconSpan.innerHTML = calloutIcons[type] || '<i class="fas fa-chevron-right"></i>';
+        
+        const titleSpan = document.createElement("span");
+        titleSpan.className = "callout-title-text";
+        titleSpan.innerHTML = titleText;
+        
+        titleBar.appendChild(iconSpan);
+        titleBar.appendChild(titleSpan);
+        callout.appendChild(titleBar);
+        
+        // Remove the [!TYPE] line from the first paragraph
+        const matchFull = firstP.innerHTML.match(/^\[\!([a-zA-Z]+)\]\s*/i);
+        if (matchFull) {
+          firstP.innerHTML = firstP.innerHTML.replace(matchFull[0], '');
+        }
+
+        // Create content wrapper and move children
+        const contentDiv = document.createElement("div");
+        contentDiv.className = "callout-content";
+        while (quote.firstChild) {
+          contentDiv.appendChild(quote.firstChild);
+        }
+        callout.appendChild(contentDiv);
+        
+        // Replace blockquote with custom callout div
+        quote.parentNode.replaceChild(callout, quote);
+      }
+    });
+  });
+
+  // Dark Mode Interactive Toggle
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.getElementById("js-dark-mode-toggle");
+    const toggleIcon = document.getElementById("js-dark-mode-icon");
+    const htmlEl = document.documentElement;
+
+    if (!toggleBtn || !toggleIcon) return;
+
+    // Set initial icon based on active theme
+    if (htmlEl.classList.contains("dark-mode")) {
+      toggleIcon.className = "fas fa-sun";
+    } else {
+      toggleIcon.className = "fas fa-moon";
+    }
+
+    toggleBtn.addEventListener("click", function() {
+      if (htmlEl.classList.contains("dark-mode")) {
+        htmlEl.classList.remove("dark-mode");
+        toggleIcon.className = "fas fa-moon";
+        localStorage.setItem("theme", "light");
+      } else {
+        htmlEl.classList.add("dark-mode");
+        toggleIcon.className = "fas fa-sun";
+        localStorage.setItem("theme", "dark");
+      }
+    });
+  });
+</script>
