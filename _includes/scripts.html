@@ -29,23 +29,41 @@
 
 <!-- KaTeX Math JS and Auto-render snippet -->
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21hFrHypEErMTeW8WZ4LaVN45wus118z716SGCOdB3u2OIy4V4ZWSum79hcly" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ11Up5y6R59y9T1wADiEkFJ3t9JaUHpYiQP2Fq1wAX191Q+Y" crossorigin="anonymous" onload="renderMath()"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ11Up5y6R59y9T1wADiEkFJ3t9JaUHpYiQP2Fq1wAX191Q+Y" crossorigin="anonymous"></script>
 
 <script>
-  function renderMath() {
-    renderMathInElement(document.body, {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false},
-        {left: '\\(', right: '\\)', display: false},
-        {left: '\\[', right: '\\]', display: true}
-      ],
-      throwOnError : false
-    });
-  }
-
-  // Obsidian Callout Renderer
+  // Obsidian Callout & KaTeX Math Renderer
   document.addEventListener("DOMContentLoaded", function() {
+    // 1. Render Math formulas with KaTeX safely after DOM is fully loaded
+    if (typeof renderMathInElement === 'function') {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError : false
+      });
+    }
+
+    // 2. Parse Kramdown's compiled math/tex script tags and render them using KaTeX
+    if (typeof katex === 'object') {
+      document.querySelectorAll('script[type="math/tex"]').forEach(el => {
+        const tex = el.textContent;
+        const span = document.createElement('span');
+        katex.render(tex, span, { displayMode: false, throwOnError: false });
+        el.parentNode.replaceChild(span, el);
+      });
+      document.querySelectorAll('script[type="math/tex; mode=display"]').forEach(el => {
+        const tex = el.textContent;
+        const div = document.createElement('div');
+        katex.render(tex, div, { displayMode: true, throwOnError: false });
+        el.parentNode.replaceChild(div, el);
+      });
+    }
+
+    // 3. Obsidian Callout Renderer
     const blockquotes = document.querySelectorAll("blockquote");
     
     // Icon mapping for Obsidian callouts
