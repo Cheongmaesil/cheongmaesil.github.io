@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   // Smooth scrolling
   var scroll = new SmoothScroll('a[href*="#"]', {
-    offset: 20,
+    offset: 120,
     speed: 400,
     speedAsDuration: true,
     durationMax: 500,
@@ -52,7 +52,7 @@ $(document).ready(function () {
       nestedClass: "active", // applied to the parent items
 
       // Offset & reflow
-      offset: 20, // how far from the top of the page to activate a content area
+      offset: 120, // how far from the top of the page to activate a content area
       reflow: true, // if true, listen for reflows
 
       // Event support
