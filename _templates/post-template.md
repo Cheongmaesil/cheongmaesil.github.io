@@ -1,0 +1,26 @@
+---
+title: "{{title}}"
+excerpt: "이 글의 핵심 내용을 한 줄로 요약해 주세요 (메인 화면 글 목록에 예쁘게 보입니다)."
+last_modified_at: {{date}} {{time}} +0900
+categories:
+  - Diary
+tags:
+  - 일상
+toc: true
+toc_sticky: true
+toc_label: "목차"
+toc_icon: "bars"
+author_profile: true
+---
+
+## 📌 개요
+여기에 글을 시작하는 간단한 소개글이나 동기를 작성해 보세요.
+
+## ✍️ 본문
+여기에 본격적인 포스팅 내용을 작성하시면 됩니다!
+
+> [!NOTE]
+> Obsidian의 콜아웃 박스나 수식($$e^{i\pi} + 1 = 0$$), 마크다운 서식을 모두 완벽하게 사용할 수 있습니다.
+
+## 🏁 마무리
+글을 정리하며 마지막 느낀 점이나 요약을 적어보세요.
